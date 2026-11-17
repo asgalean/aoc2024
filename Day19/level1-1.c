@@ -1,0 +1,241 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//GLOBAL
+
+char	*input_keys = "buu;ubg;gub;wbwu;rrgrgg;urrwr;grwb;ubw;ubrbr;ubgb;gbw;rbrwgw;wbrr;brg;urugggr;wgbb;uwwu;urgg;wwwr;wrub;rbr;brgwb;gruwwb;rrwuwbu;rub;urwwgu;bbbw;wrr;uwr;grr;ggwrb;wbrwwbur;brbg;rubrg;urwbbru;brwww;bu;gugwww;rbww;buw;rurwgrug;rugwr;ruubww;bgbu;bgbw;wuu;burw;uuwb;rug;grw;bbrugwr;wurwbg;uurwu;bgu;ruu;bgrg;uguub;bgug;burubb;ubuugb;bbww;grbrr;gubbww;gwbgrwu;ggu;bubgurub;wguu;gww;wuuu;wbgb;bgrw;gug;rwwbw;uru;rwr;ubwr;uwb;bubwbwbw;gggwr;brr;gbrrg;rrww;gwg;uurubb;ruwwgrw;brgrru;gbgrwb;wbbwgg;wuwr;ruwuwbw;ggwrr;gbu;gwr;uur;wbgu;gbwgbgr;bbb;bubu;rwwggw;ruw;rbwuw;ugbbrwu;uurrgrg;bwwubwwg;gruu;ubgwu;rww;bur;ubwrg;wgb;gurbbr;rgbr;wuw;gbwuwru;rgwbrg;wbbr;wr;bgrrgb;wwb;urgwubww;bwurw;ur;rgbu;rrurw;ubbu;ubur;wrbwwr;uugww;grg;rwb;rgb;gguggu;rwgr;gurbubg;guwwr;wwbgb;grbgwruw;wug;bgb;rb;ruuubggr;www;wbgg;gguu;bbur;gbub;bwg;uuugbw;brb;brrrggu;buwu;rbrg;bg;bwgrbw;bwb;u;guw;gwrwur;brgb;wrru;ruugu;wrgrg;wbrb;rg;buwrr;ugr;uwru;bub;wbb;ubr;brrwr;wgbuu;bguu;bubw;ug;ugwg;wurbww;bwrbuwu;wwuwb;brbubg;wwub;g;brw;bbrwrgb;bgr;rbuwb;gwur;bggg;gbuu;wbu;rubw;bguug;bbw;wuguw;uwbwrgb;wwwub;wwbugg;gwubbb;rugwg;rgwwbru;ugbbubr;wrrgr;bubg;wwbwu;wbw;bbr;wbggugw;wurw;wwgwgr;burgr;wbgbu;wwwuuw;buguu;gwrugg;wwgugg;bburg;urwbu;rrug;ggb;ggbg;rguwbu;guru;wwr;ggurrw;brbbbubg;bbguuwgw;rru;ugwu;wbggr;rgrbww;rrubw;ubwurwg;gbr;rwrgw;wwguwbu;wggrr;wru;wrgbb;bgburwg;wruwwg;uuu;rugr;rwbw;bwwbr;bbbrgwu;br;ubb;bbu;urg;brbuggb;uw;rbug;wbbrgugb;rgu;uubgrrgw;bru;rwgbu;wrgw;gwb;bwbr;bgw;wgwg;wbgrwwg;wwwwgr;gg;gwgggu;ugwuu;gugur;gggbw;bwbwguu;uwbr;gw;wrgg;rugwbgg;uwg;urb;uwggb;urgggb;bbg;gwbr;uub;gbg;gwuu;buwrrw;rbu;wbbu;ru;rbbw;rgugrbwg;ggbgrw;ugrwwww;uwgbwu;wwbw;wurr;wrwrrr;rrw;rbb;rwrgr;bbwwg;rbg;bbbgrbrw;ruubwb;ubbg;gr;gwwbuuuw;bwgr;rrwwggu;bbuugb;guwwbg;rguw;rur;gwbbbbr;rbwr;wb;uuwrbb;uruwbrrr;bb;bbubu;gruguu;urr;bwbrb;rbru;ugu;ugg;rwbgu;rbbuug;uguw;grwbg;bbgrrr;gur;urw;gguwbb;rburuug;w;wg;ggw;wur;ubwuw;bwggugb;gwbu;wbrg;gbrgw;wrugur;rbgb;uwbrrubg;bbugugw;rwbgwur;ubwu;rw;wurwggr;gru;brur;gwbuw;uwu;gurbb;rgbgr;bgg;rggg;rrg;wbbg;wwu;wbr;uww;ggr;wbwgu;rrgu;rgw;rrwugrg;wgug;wrw;rbw;bug;bruuubrb;rubwurr;rwub;bbbru;rr;gwu;ubbgwg;gbww;wwrgrgg;wbg;rwu;ugurw;bubwg;wbubw;urwur;wgu;ubuuug;wubu;rrb;rrru;bwr;rbbubbru;gbwb;ggrruw;bww;uu;wu;wwuww;gwguwbb;ubu;uug;gubgr;rwggb;ubwug;wrg;r;wbwgwu;ww;gggw;rubrw;ugw;wgg;buguurwr;grb;bwur;wgr;uubb;wuwbwrb;urbwr;bw;ggg;bgrgr;buguwr;rbgbg;rrr;wgwbrr;rgg;rububg;bwu;ub;gbb;wub;uuw;wgw;bbub;wbggbb;wwwbgg;rgr;rbbbu;wuwb;grubu;rruwu;gubu;urwu;wrurg";
+char	*input_patterns = "wuuwwuwubwggbgggggwgurgwubwwrbwubgrbuubrwwgwgbbwugw;gwbwwrurbbgwuubwwugbrgrrwrgurgwgggubbugb;bugwwguwrbbgrbguguurbrrbwubbbrrwrgbguwrurbgwbg;bugwgguwrwbrggwugwgguwrwrwubrgwgwrububwrgugb;ruurguwurrwbgrrgwwbrrwgbrrbrbwwurwruuuuwbbbuwgggbugb;bgrurbguuurrgbgggrggrbgwbbwwguuggrwbwrgbgrrbugbgguwr;guggrwuugwrbbrwrubbbgwrrwruururgwubwwrbguugb;grugwgrgwrbuwwruurgwwwbrbrbwrurbbwrrubuwugb;gbwrgrgbubugggrwuwbugrrrrgurbbwbbgbggguwruwuubrurwrg;wuwbbgbrbruuubrbwwwugwbbwrugrwruwggwbbwbbuurbgr;rgbrbwugwrrgggbruuubruuubggrrrrgrbrgrwwrgrrgg;guwuggggurwbwugwgruwubwrubbuwbrwurwubugrburwuwbw;brbgwugbgggruwwugbwbguuugubwgrrrrruguwugubu;uggrbbbuwrggbgwbrbwggugwbrgrbwwwbrrbrbrwguwbbuugug;wurububrurruguubggbubbgwgwgguwbguubbwbwwwbrrubuuruuubbwgur;rrbbrbrwbbrrgrbbrugwggrwbwgwrrwwggugrbugwbugbbwrwub;ggwubrwrbwrubuwwrbguubwrrbbbbbrruuuruwbbrrbubgr;brgubwrbbbrrrbbggwuggrugrggwbbuuwwwubwbggwwubbrgw;wbbwurbrbgbrruugbbgrbubuuguwuruubbbgurugwbrubr;bwbbuwwurbwgrubuurwwbrurwrbwggrrgwgrwggubruburbgrrg;gurbuggubwrggugggbwuurbgbgugwguwrbwbgwgrgrgb;rgwbuwrgurwbgubwurruugwgwrbuwrgrbrurrurguwwwrugb;wrrugbguruuwwrbrrwbrggwrwrgwwuwrwbgwgrbwguggwbwugb;rgbubguwbrwuuuwrbgruuwgrrrugugbbwrrwrrgruuubruggwrbrgubrw;uguwgwwbubgwwwrugbururbbugugrwgbbbgwubwggbburwubwuuubgu;bbwrgwbggwuwggwggurrrrbgbbgwurrwrgwuwbuggbgrgwwuguubrguuugb;wbbrbguggurrbuuwbbugrwrbgwuguubuguwbrgrurgbbrbgruwuwwrugb;uwgrbwuuwrugubggubgubrgrgrrwgrgbrbbwuwruwgbbgwubwww;buwbgggwwrwbuuugwwbbugrgugurrrrbwrugbruuuwbwrruw;ugrurwbgbwrbbgrwwgrwbugwbwgwrbugwgggugugugwrgugb;wuwwwwbubgwwrwwuuguggrggrbggbwbwrbwuwubrgrr;gugbwbuuwugwuwbrbwuguggbuurruwgugbbwbbwbrurgrrbbwrgurwgg;ugurugrubrrbgwrubgwrrwgubbwgurgwwugrwbuwrbwrubbuwrggugg;bubuwuggrbugburbwwbbwgwbbbwwgubgugugbrurbuubbgbrgbbgb;wugbgwubugbbrrbgbrrwgbwuuububwuwgrugububrburbuu;ubrubuurwgbrrrbgubbgwwrbgwwbgbububbbruwwwwgguguggrgggugb;wubbwubgbwrrrggrubwbbwwggguugrgwgrwbgurgurgbuwuurbrbgwu;gbwbwggrwgrurbbwwrbruwrguwgggrbuwrbbururrwrwrrrwwwwwburbwu;ubgbrubbbgwbguburuwuggggbgrwbbguruwrrwbruggugwwuwbb;bbbbgrbbbbbgbwrurbwbwruubrbrgwrbgwwrgbruwwgwururguggbb;uguwbubguwrgrbgwgwbuurbuwrrgbuwbuurruwuggububu;uwurbbuguwbwwgwurwwbgwuwggbwrwbgrrrrbuwruwbrbgguuubwggrugb;ubbrwrbrrbgbrgrrwuwgrrwurwrbwubwbwggguwbwww;brrrggwrgwruwgwwuwwwwwwbwbwguwbwwurbwbuggubbrgrugurugu;urwbuuwgrurwgrgurrgbbwguwrgugurrwbwrwrrbugbwguugb;wbrubrwubgruurwwwgugwwwbwbwbgbuguwgbubbwgrgbrgbrbguwugwbrb;gbguugwwgggwbbbbbbwbguugrbrguuwuwwrgbwbgggw;rbbrrrbbwwbugwbbgbubbrugwbbrwwbruuwubwrgwbuwrrbwu;ggubwggwbbuwbwbwuwgrwbwrbugugbwuwrrugruwuurubbbw;ubururrguubuugggubgggrgrwwwwgbgbuwrbggrwugrgbguu;ruugbuwwbbrrbwurgguburrbgruugugbguwwrubrwuwrrwuuugb;ugbgbbrrbrrggbwwgwwubuwwuggrugurbrbwgrgwburrrurgggwbugb;guruwbrrrrrrbbwwwruwwubrurbgggwugwruuurwugwwwrgbuwgwwwugb;urrbbrbrgwwrbgbbbbgbwgruuwuwgwwbwwwuguuggbg;ubggggbbuurrrbruuwwbrwugrbbwrbbrubwwruggrrwwuuuggw;ggbggbwguurugggwgwwgurrrgubgwrruguburgurwbwuurubbgrgwbbrww;guurbugwuubgugrwurbuuwuwwuruwwrgwwwubbbbuubgbb;ggugwggurgguurwgwwrburwrwwbgwgwbwgwugwubrbuuwubugb;bwuwbwgwrwububgrbgrgwbwbwrrubuwrbgwgurbrwuwubwugb;ubgbgggrrggrgrrwbrubrguuwbwurrrbbuuurguwubbuwguurw;gruurubrugrgggurwgbguwwrbwwrrwwrwbgrrugwrrgrggrurggb;rbwwgbwrwbbgrbuggrubgurggwbrrguuurbgrbgrrrwwbugb;ruwugwubgwwgwruwwwwuurrgbbwbwwwrbbbggwubgbwuubrwbuubrggbw;bwbrrrrwurrrbgggburgubwubrruwwwrrgwruugb;urwwwbggugrrgwuwubbbburbugrguwubrbwbwwugb;bbwrrwugugbgbbgbrrrrrbuwwuuuwrgubgwbwubrburwubwrrgwwurwbr;bruubrrrwbruruurgrwbrbguwuwwrgrbbgbrbugggbguuwgbbub;rgrburrwuruwrrgruruuubgrrrrwrubwwbwbbwbgwubuugwbgbww;rwwgrrbbwbguurwggrurgwgwwgbbubrwgrurggbggurbbugbbrubwruub;rugbguwubggwwrugbbuwbrwwwuuwbgrugrrrgruruwuuurwugwgrgubruugb;bbwgbwwruuguuuggrgwrrwrugbggrbbgwrggrrgbgbguurrg;wggbrguwbbrbbgwugbbgubrwgbbwgurbgwwrguruubbrbuwguwrrwgrugb;rwgrrgwwwwwugbwuwgurguuwubwbuwrgggbrrruwbwugb;gwrwbubuwurrubrrbrgbbggrrbugurrwwwruwubwubwuubwrgr;wwrbwggwguwwbuwuwbrgrbwuuwgruurwrgbgwrubbgubwbrrgwrgugb;wwwwugwwuwurrrrbwuuuguuwuwuwuurrrgwrwrrwwgbbbrwrrrubgu;guuguwggwruwgwbuwrrwbbwrbbbbburrbuwbbrgbuuug;uwuwurwwgwbgwrgrgugwgrbwwbwbbbuggugrbuuwggwwbguuwgw;rwrrbwbgubbbwbrgwubwgbwuwwrrrwbugggwwwrbrg;bgbbwurrrruwguuwwwgubwrwwgurrwwguwrwgrgubgubururrrrugb;bwugruwgwbwbrrbbuwuuwwurwbrrgugbbubguwggggwwurrwb;rrwuuwurrwwgwwwbuubgrruugrgurwuuwbggrbbwwug;wgugrwuruwwgrbugbwbgbrrruuubggrbrwubwwgugrwbbrrbugb;wrwgwwubuwbgwbgwgbubuwuwwwrubwuuwwwwwrwugb;brggbuwgwrgguwgwgbrwwuwuuugwgbwwwrgugwbwwwguwuuubwu;rrwuwburwgwbburbrwrgrbrbgbgrrrrrwgrggwwggrrwuwrr;gwrrrgrwuruwrbrbbbubgrbgrugrrbbrwgrgbbuugbbbugb;guwuuwrgbbgrrubwwuwbgwrwwbguwrguguubbuugrrubwwbruwrbw;wbrrbuwruuuurggurrbgwburwwgurwbrwrbwuuuwwrrrwwgubwgruwrbwr;rrwgrugbbgwgrwgrburugubuwrububuuugbugugbbgbrurwgrugbu;wrgwbwbggruugbrrruggwbwwugrguruubgwwgwwwubbwwwwuruurwuru;bwbrrrbwugubwggrgbuwrbubgubrbbbgwwrgwbrrbu;ugbrrrgbbgrwrbwbwwuwbuuuwbuwuubbgwwurrrubwugggugbbgwrg;rwgrwwbgwugbwrbuwrwwwgwwbrwrugurwgwbbguwbgruwrggbuubgrwuugb;urugurwbrrwrruwwrbuubruugurwbrbrbbruururbwubuuugwgggwgugb;ugggugwrwwwuubuubggbbuugbgguwrguubgrrgwurrwwuwubguurrrgugb;rubrgrrbuwuruwgggbuuwbwubwugggbgguwbwubbbruwwgwwbbbbu;uwbwgubrbbwgbugwggurbugrbwwwgrwubuuubwubwrw;gggrggwbwgbbwuuugwbwwubguububggruwububgwwgbwbrrwbbbwu;guuurwwbbuwgguuwwruubuurgbgwggrrbwwuurwbgwwbubbbgu;bbgbbrurwrwbrwwbuguggwwwguwuubrrgruuwgururugububurrrb;buwbrrubgubwbubgbrrwwwbrrggwrwwgwbruuugb;grrbggubwggbbbuwggrubrrbbbggrbuuugbrrrurbbwbb;wugggrrubwruruggbrbwrgwwugbwwbwbuuwwrbubggbggw;rggugrbuggrwubrwuugrrugrrrrugwubguwbwwugb;grbrgbwrwuugrrbugrugbwruwrwbbggbrwurbuubbwubrgbbgugb;ruurubgrbgrwwgrwrwgwbwuggwwbbrgbgrbbgrugb;gwbwgubgggbgrrbgwuwrrwwgbrbbbwwgubugrrbwgbgbrwgw;gbrubwggubwruwwrrwbwrrrwuurwrgbubrrubbbugrbbwu;gwgrrbwwgrubwrrrrwwrgwrgwgbbugrbrrgrubwgruruugbwugwuuubugb;rrrwwubbuwuurrruubwbwugrwbwwgurbwwrwrruuguubbbbubbggwugb;grwrwburgurbrwuuubgrrgwubwrbuwwwrbbwrgrrrubrwwgrrburwbbw;ububgwuurwruwbwuburbuurwrgwrrguurbwgwwggrwbbugggr;rgwugbgbbbbbrrbbwwgwguuwurbwbubwwgwwbbgwgbrbgbrwuuuw;bgbbwugbrwuubuwrgggruuwubbbbgbruguugwrwrbu;wugbrbrbbwubgbrrugubwugbugrwgubbugbwggugwug;gbbbwguuwrruubrbgrgbwgubbbgggbbuwwbruugb;bwgbrbwbbburubbbwwggrwbuwbruguurwruurgbgbrgww;rbgrggruugbbgwbwuggbruuuurgwbbgubbrbbubgruwbuwgwr;wgwugguuwubggguubbruugggrrbrrbrwburwrrggrgubrwbbbb;gbbgwuuubwbrwwburuwwruubuwgwuuwuwgwgurbgrrgbb;ubwgbgwggwwbuwwwbbggbbbwuubwrwggrbbgrrugwr;gwugwgurgugguwubgbrgwgwbbwbwbuwwwbwugrbwugwgrrg;rgbbbwruubuurruwbgugggwubwwuwgbbugbbrrrbrwgrrgbr;uwbggrgrbuwbgwbrurwgbrbbbubgrwburrggwbrbuwugrbwrggub;gwuuwgwrggbwrrbwwuruguwbrwbgwuggwrgwbuubuugbbrggw;ugbwbrrbbwugggrwwbwubbwrbgrwrrwgbgrgurrurrwbg;gggwbrggubgwgwrgrrgurubbguwrbwwurgbwrurubbwbrbgrbwrbw;ruwwgurbbbguurgrbwwwgugbbrbguggbrwuurwgwbrr;grgugrbwgbbrrugbuwubrgrgbwururggwrbrbgugb;brurggwbgwrbbugwbgggwwbwruwbgbgbubgrgbwbwgwbgugw;grrggguugwuguugrrrwwugbguugrbbubbrugrubgbgbwururbwbrguurwugb;wuubwubwgrgurwurrwbbwgbwbgugbwbbbwggruwubgrgbgubb;gburuuwwwwrubrwwurwgwbbrbuuuwgrrgurgwwwgwgugbwgug;uruuwbwbbrwwrwruwrgruwuurwrgrguwwggggbuubbbbrrgrruugb;wrrrbubruuwggbguurubrbuguwurwbgbrrbuwurwbwggbwgrwrbwwuuggugb;ggwwrbgrgrgggbgwuwbgbgwwrrwburuwwgwbggrwgruuwwbwgrugubrru;ubbbbgbugbwuuggubbwrugrbgwwrruwuwggwwuggbwguruw;rgurwrbwuuuubwggrbuubwwubwwgbubgwugbgrgrurwuwbrwrbbgurgugb;bgrgrrgrurbwrbrbruububwuwgububwgbwwwrugrgwr;ubbggubwrgwgwwbbbwbbrgguubrbwguggrrguguwgbgg;ruubwgbgugubbrrrbgrbwwuwwwwbgrbwwugrruwwrgbruwwrbugb;bururubguggubwrurgbrurbubbuwgbwggrguwgggbbubugb;grgrguuurwuwgubgrwbbwrwggggbguburrwbububrgb;wubbwugruwbgbwbrubrrwggwwwubbgurwurwubuggbrruuurrrugb;wubgbwguwbugbwgwwgrrbubgubgwrgrbgwruwgbwubbggwgwr;bwwruugwruuruurgbwwrwgrwruguugruruggrrbgugrwrrrrbbgwururugb;gurruwbwubrurwbuwruggurrgbubwwggwbubgwbbuw;bwbggubwbbwbwgwrbwbrrgurugbrbrbrbwwrurugrwbggugu;bwgwgrgwwguuwrwgbuurubwgbgbrwwwgbugwrbwrrggug;ubugrwguuuwrrgbgbggwgbbbubgbgbwubwggwggrururgwr;wgwwbguwwrburrrwrwwuruugugurbrbgubbgwrrrbbrrugrbbubbb;wbgurwrbrgwburwrguurrggugurugrbrguwwrrbgruwgbwgrgwwuwgg;brrrggwugbbgrwrwrgbbrgbuubwguuwwrwrrrugurugw;gbubbgrgggbwuuwwgugbgrwbrgbbwwbgbuurwgurwbgbub;ggrugwugrwuburugruruwwwrurbgwbwrbwgbuggwggrwwwrburguurgugb;wwrrwrruwwwwrurwurrbbrgrbbuuurbwwbguwwwbgrwggbwr;ubrbuurbrwbgrbrwbgubbbrrbrburggburbwwbggrguwg;ugwrbwuwrbgrrubugwbbbbrbrbwuuruuwuwbrwbgguwrwgr;urwgwwrubrrwrrwwbbrubggrbwrbwgrrbwgrgggbbubwrwwwwguguugb;ubbugwgbwwruwruubwugburwurgbrgwwgbgubbgburrbuuwrbrwurggugb;rwbgwbruwbguwbrwwburrrrgggbgwgbggrwuwuwbrwgwbggugb;guggbuuggrgrwwrgrwguwggrbwrbggwwrbgrwbuwrwrgbrwww;bgwugwubgggwwbuuuwgwubuugggbgbwurwbrgbuurbbb;wggrrrgrbwruugrgbbguuwgwgwgrugrbgubwggbugwwrgwrgrugb;uwguuwurgrbwggwbwrubbwgbwrwurwrwuwbwguuuguwuuug;grwuwrgwbwbrwrbgggrbbwburbgbuwggrrrrrgbbwgu;ugwrwbwgwrggwwgrrgubgwgrgwurgrwrrbururbuurrwgwgugugb;wgwggrbrrwbubwurwgubguwrubgwbbrgbbugugguruwbbggruwuwgwwugb;ugwbgbrgrurrurbgbgbruwrbgbugggrwwgrubugggwubbwu;bbwugrggrwggrwwrugwuwbbgbbwurbgbgrrguwubwbrbrguwrruugb;bbwggrwwbrrubwgbubguruburwbubbrwwruwrbbbgrburubruruwurwwugb;wwgurbbwrwrwrubuuwuwgwrrbbwgururbrurbwwggwuuwrbbgrwrgrbg;wbwbgwgrbrwrugbgwbwgbbgbgrubrrrbwruguugwrb;wbburwwbggbbgrrbbwwrruuwrrbuguwugwwugbwgb;uwwbwbuwrwrwggbwrbbwgwrgwwubbwbugbwuggrwrbugb;gurwgrwwwgwggbubbubrgwwbbwgbwuwbbgwwbrrgbbu;gbgburbwbburbrbrubwwubwwguubwguwguuburubrbbrrbruggg;ubrbwggrbwururguwubggurbbbrwwrgurwwururuugwrrbbgwburrwrugb;grbuurwbrbruugubrbwggbbggbuwruubgwubbrwgbwbwwwgwugbwgrgrb;gbuugbbwggrurbwrbuwugwuwuuwbwrugbgrbubrbubrwuw;wrwggugbgurrwbwrgbwubrurbwwgggbwgggwgbgubggrbuwwugb;wgugbggggbrgrbbrwbruubrrrrggbuwgrwbrbrgwrrwbgbgwuuugb;ggburgwguwggwrbugwgwurgrbggwwwubwrgrugbrugb;wgubururrugrbbubbrbwwubwuruwwugrubuguwburgubrrwwbbbgbbgwg;gwurwgwugbugurgubgubuguurwurrbburrbubwwbrwgub;bwguuugwgugwbuwrwrrwrrubrggrwbbrgugbbgwrguwuwruwwugb;urrrubrwbwgrgruuwwgbubrbubugguwwgrbwrwuwbu;gruubbbubwrrrgrbwwbuwbwbrwrubgrrrurgwugbbbbbwggubwug;ugbuwrruwrbbwggbrrgurwggwwgrubbwgwuwwrwugb;rbrrwuwrrbrguuwuggwbrrubggwgrgwrrwrgbwgbgb;rbggwgwgubrwbbrgwrwwbubuwgugwrwrgrrgbugb;wwuwurrbrubbbubgggubwuwbrrrbrgbrwwgrbwurugbugb;uuubuugggbwwgwrguruwuubbrrguwwuubwwubbbubggubugb;wbgwbubwbwbwwbrrrwbwrwwgugurrgbbubuuwgrrgbbwuggubgug;grwbbrwuwgggbuwgwugrubwubggrgbwbbugruwugrugu;gbrbwggbbgbwwrwgruwwbwrbbuwburrwbugbbrbubgguugb;brbwggbgbwgurwubwguuuugurwbgbwgggubwrubggurgugrbwggrub;ugguuwgubgubrubbbbgwgbuguuubrgrbrbrruggbugb;bwwbgwruwrrbruuurwugwwbbrurguwrguwrgwbugwguuugbugg;bbwuwrrwgbgbbwrwwrgwrggubggubuwurugugugwrrwbrgwwguuw;ugwubuguurwrbguruwurrrrgrggrugwguuggwgruwwbbwuu;gwgwgwbwwrrrbburbugubbubuugugbwuggugwuubrwrggbrbgurgu;rrrubgggbgwwwbbrrrgubuggbgwrrubgbubuwrggwruuwbuuuwurrw;gwgrgbrgugbgguwbwubugwrgbrrrgrruggwgwbwbwwurbubgrbgwuw;uuuubuuwgrwbwbrgwrwwuubwwgrbwrugugwwrwwgrurb;wugrrgrgbuwggwuuwwbrrbrwbbwbgwuruuwurggugwrwwwug;bguuwubgrrbwrrbgrubgwburwbwguggwrbbrurgbgrguwuwbbbgrurrbrugb;rwurgubuwwggrwrrrbgrbgruwgbrwwuubwurgwrwbb;wrbubrrugbgggburubruubgrugrwgbgwguugwwgrubwbrrguwgrug;uwugwbuburwgrgbrgggrrrgbbggruubbuurgwuubwwgwbrbruwgg;wbubuwgbwbwwbwbbgbbguuwgwugrruurbwbbrbggwuburgruugwwrb;grgruggwgwbbrwrwuwwwuurrwurwwwwrgbrugbuurruwr;urbgbbguuwgrwbrgrggwuwurbugbgugrurbrrrrrwrrgrgubw;gwwrwwwbburgwggburruwugubwwwguuruubugubrwb;wggggguwguwrrrbugbbgrbwbugbgurrbgugubuubgwuwwburwugb;bguwgrwuubuwgwurgbrgugrwbrwbuwgurggbgbugb;wbuubbwruguwuburwuwwrbgrgrrgbbgggrbrbwuwrgguu;ugwwbuuuwwwwburuggubbrbubrurbrrrbwgbgugb;ubggurbruuwgubgbrggugbbbbrbugbuubrrrbuugbrgwurgw;uugbgugrbruugugwggwwrrbugbgrwbwrggrwwrbuuwgb;gwgugwbugugwgrgbrbuuuwwbbbbrurrrurwwgwuuugb;guwrbggbbwgrrwwwbgrgbgburwwbuggwggugguwbrugb;guubbgubwurbbrbbruwrwbugruwuwuguubugugrruuggbgwgwwuggwugb;bguwbrrgrrrggurwrrwurwrrrbrbuwrurbwrgrrrubug;ggbgwrrbgbrgwubrbrgrwgrurwbgwbuwbrgbrugrwwwgrbbuwwurubbgw;bbuurugwggurgwubwbbwgwgrbwuuwgbggurgwwbrbwuwuwbwb;ugbbuurubuubggubwruubbgwubggbrggubgwwbuugwuwbrwgbwug;brrggwbrburrwbwrgrwwubbwbbrwuguubugwrgugwugggugb;wuwrbggbrrrbrgrggbgburrwggwgwgubgrrgbubrggbgbbgbwugb;bwbwbgbugbgwguwwwbwwwugbggwwguwrbggruwgbwguwguugb;rbgwwggbwrwggugurbgrbgrgrgbgrrbugrggrwwugb;uugurugggugwwgrrwbuggbwgruwrbbwwrguwbbbrwrrgwruurbbuwugrwu;rgggwgbbwguwwwugurwbuugrwbrururwburburbrurrwuwgugrurwwurrg;ugrwwubgrwugwburbwruwgrbrgrgwwbubrbbgwwrgugbwurubggguugb;ubbwubbbrggugrbbrrrgwuruugbuggubgrbwwbbbwbggwrugb;buwgbbbbwugbwbruwuwgrwubbuwwbgggwguuwbbugwuugb;uugrgrwgugwbwwgbwrrbuwwuuguwurggggrwugwuwbbuugb;urguugrwuwwuurubuurbbwugrbggrgrgwwguubwwwrbbugb;bwbwrbbggwrggggrgruwwuwwbuwrrbggrgrrurwggrgbbb;bwbrwwrwwgrwggubwguubrgwbburwgurwbgrruugb;bgggubwubwbwwbuurbrgbwbuurbrbgwwgrgbwwwrwwrbrrbbrggb;urugbruwbrbgbbwbguuurruggwruuurrwrubbrrubbrwwwrggwwg;gwwuggwbuwbbrubgbwgburruwgbwbgbbrgbwrugbbbwugbbuuwbrubrbr;wbgbuuguuwwbuggwrruggbwurwrrrubbwrruurburrwbbbuurwu;bgrgbruruuuugwrwuggwuwrbwgrwrbwbwbbuwbbbgggwwuwwgugb;uwggubrrwuruwwuwwuuwubwbbgbbuuubgwbwgbwburrbrbuugbgguur;grgbubwurbuwbbrgugbwuwwuwwrwbrugbrwbuugubbr;guuwbuwrwwurubrggwurubbuwgrrurgwwugbwgruuguuugb;wbbwwurwwwwggrrwbrbuwbbrguwgwwrubwrgggruruuugwuwbru;gwggururwruuuubgrrrgggbguwbrrruguuwbbgguggurr;ggbrruwgggwrrwggurbbubrbbbbgbgwwgggbuugrbrwwburggb;wbubwgurwwgrgwuruurgwbrrugruwbugrrbbgwrguruwgurrwuwb;rgrgbgwrrrgrbgbbwubgrggwwruugbbuurrubrbwbgbwuurruurugrugbr;buwubbrwgbwbwruwrbrbgrrwrugbggbrbbbwbbgrwwruuuuugwgrgruww;gggrbrbuugwgwgruwuurwuuggwwbwbuwgwggrgrrburuwguwbbrbwwub;bgwwuwgbruuuwwgwwugwrbwurrgwubgwwrggbrggwuubgbrwugrbg;rugwrurrggwwwbggwrrubrburbwrbubuwbrwrwwbuwugwuburubwugb;ugguuwrwgrbuugbrbwbugbbgwbwwuurgruguuugurwuggwwugbwwb;rbwrbbwrwuwrwgwuuwwrubbgrrwrbwuwwuurugwrugb;bguwgwgbuguurwrbgrgrbwgwwgugwwwwwuuwbrbrgrugb;rwgwwuuuwuuuuwwrubugbwuuubrurgbbbgrbbwguwbrrubgugwg;bwbugruruuwbgrgbgwwbbrrguubuubgugwwwwuwrgrbuugb;grgrgrwrbwuwwbwrrbgburubrgubrruurbbbgrrgrwubr;urburrrbrrgrguubugrwgrwbbgwwwbbruuubgwguburrwu;rwggbgwguuugubbbbrgggbuurgrugrbburbbwruwwuuwwbwbwwugb;rubgbrguggrwwwubrbrwburrwgwurrbubwrwwgrrwbbbwgr;uwwbwbwuwgrbrbbrwbwwgruburggbrgwwgrbrrrburgrbbbub;wrgwrrwwwbgubrbrwbwbwuwuurwubggbgubrwrrbbwwbgbgrrbwwgrugw;grrgwgbggbgbggrwgwurggurrggwgbwuwrbgwrubrg;wuwgrrbbbrwwubrubwrurrrggrbgwbgrurgwgubuwubrgbbbuguugb;rwgrgbgggbuwurwrbrrubbrrbrbwgbrgrwwguwgurrgggurbuuwgu;bbwbbguwugrbbbbgrbrwbrggbuuurbgwgwgugbuwgwug;rrrurububrburggurugurrubwgugwguwrbgbbggbwgw;bgubrruugrwuugggwwbuwrwwugrwggbgwwwwwggrrgbubbgrgbgr;bbuwburbgggruuwbuuwwbwuurwbuugugrgrgruwwwwb;gubbruurbggbwuubruubugwurgwwbbgubrbwgrwwrggrguugb;bwwgrrurwggugrguuwgrbwuwbuuwwgrrwggbuububgggugggbubbbgur;rugrubwwbguwuwwwurwbbuubwwwuguwgurbubrggwrrubrrrrbwrbggb;gwbuuwgrrgguuwbgrbgwruwugburbrruurgrurbwbuwrrugb;gbwgwgrrgwrwwrbbwwbggbrbgwrwwrwrgwggrrrbgrwbubgurg;wuubrguwbwuwugwurgbgbwgubwggbbrrurbwguurbw;bugwwbrgwguwruuwgbguuwbbwgbgbburbwburbrbrrrbgrbw;grwbwggwrbbbrgwbrwrruwubwbgbrwbgbbwwrwggwgwwuurgwurwgggrgugb;uubgrwggrbubruuubrbrrrbggbgbbruugwwuwgrugurwuwwrwguggbugb;ruwgugrggwuugrugbrwrbggugguggrggrbwuburbbbgrr;wrububurgbbrgwrgbuguguwwbrbgbwwwwgrbbrwbugb;wuuwurwbrwrgwrgrrwububrggwgbrrrbgburwgugb;rgrrguwgwguubwrbruwugrwurbgurbbggbrwgubwbu;ugwbgrbbbgwwrgggggrrbwurrbbwwgguwrwgwbbugb;bgwrwrgwbwbwrggwuwbggrwwguwurbrggrguuubggwwwrurbuwwuugb;bbgwwbbuwguggggwbbugbuuururbrwrrububbbbruugbgrrrbururrwrugb;wbrwbrwgrgwrwuurguubrwguuwuubwrwwgugbrbrbbwbruwgrwwuuwuggw;wbgwuurbwggurrrbugrbrugbguruwbwgubgbguurrbrwguwrrwgrbw;rubrrbubgbuuugbbgggrgrgggrruruuwwurbgrugbwrrbgubugrwgwrbrb;wugwrwwrbuwrggbugbwruugwgwbbgggwuruwwrgurbbrgrr;brrubrwbbbrgbuwwguwgrgwbguuwrwrbruwwbrgrgwbugb;ggwrrbgbwgrbrwbbrrwggugwuurrgurgrbgurwrbbubwwuwrwwugb;rwrrbgrrwbbuubburbbwugwugwgbbwwbuwubuwguwgggrwbuugb;wuuuwuruwbrrruwrrbwwwbbwrwwugurbbwgrwrguubg;uwwgbbrgurbwggwbwwuuwuuuwbgwwwrwgwrguggrgwgrgrwwgbbrurrrgg;brgwbbrgrrrrrwbwgbwwgruuubbbbwrugubggwgwrwruggugbgw;rubgwrgbrwrwbwwbrrwrbrrwbwuurugrgwbrgrgubuubbubg;rwrbwwwubgbwbubguurgbwwbbwggrgggbrrurwgbbbwwbrubbggrbg;wuubgrrbrrgrburuggbbwruwbbrrwbwgrwwbwbggbbubbbugb;gbuwbrruuwwwwwbrgguruubrbuuuubgwrrgugrguwwuwwg;uurburbrugwurruwbrbgggwwubgwuwuwggrwwbbrrrbwbrwggbrg;uwruguwwgwwbuwugurrbwguwurugrwrugrugrrgwuwugrb;grwrbrbgwgwwrbwubbwurwrbwgrurbwgurubrgwbgruuubguuur;gbugrwrgrbrrrrbbuuwubrugbgbgwrrbbuwgwwuwruggwgwwwgguurwguugb;bbrbgrgrbguurgwuurrgwuurbrgwrugwbrgwbbuwgbubrwugbggb;brwwwgruggguuwbwgbrbgwbrwbbbuggbubwrbwwruwbgrwgbrruw;gwrgubwgwugrruwwrrugggbugurbubuurbwurgbbwgggwggwrub;uwbuubrugwubbbbrgurbrrugwrbbrbubrwgbbbrurwbuugrbgwwgugb;gubgbwrbruwwgrwggrrbgwwbgurgbwubgbrwbuwrgrrgg;wwgbrgbubrwrguggrugwuwwwwwburgwrbgggguubwwurwbgggwru;gubruugrgrggbgbbgbubgugwbrrguwbgurrrwrgbgggwbrubbubbwggbgugb;rgubguuurugruggrguuuubggrwbgbwgbrbrburugwbwuwwuwgbw;ruwbuurburwwgububgrbrwbbbrggrwrgrrrgugrubgrgwwgbgw;uwurrrbbuwbgrwugbwgbwbrrwrwwuggwbbuuwubgwbwwugb;gubguruubbrrugburbgrguurwrrurwbbuwgrrrruuugrwgrwrugb;grurrwwbbuwwrwwrrrugbwgbrgbrugrrwrgwggrwbuwurgb;uwrrgubrbbbwbggurrgbbrggwuubgrbgrguugugbwrgbwgbbugw;wgurrguubuugburrwbggbrrbbbwbgwbrwbwgurgrgururgbbbruwuwb;wwbbrgrgbubruuuwuurugrruwbuubwrgrrrbggurwurgurrr;brbwwbguuugurruwguwgugbbgrbrgguwruuuuwwruugb;rrbgwwwwwwbrguwbrgwwguwrurrwbgugggbggbwgubrgbubugb;grgrgwbrruugwgbwguwwwbwwgrwugbgrbbwrrwgrrbwrbwwgwwbbw;bgbugrgugugrugrgruuurwwrggbggwrrwurbbgggbwwwuwggwrgrgrb;uwwrrgrbbwuuruwgwgggrwwrgwrwrruruwbggugrguuugbrrwrbrrgwb;gburgwwgbwbwurbugurrgrruwubbububwgrrgwwgbuugb;rguuwbururbwgwubbgrgbgrrwrwbuwwwwuggrbwrguub;bbugwgugrrbugbgruwrugwwwbbwurrrurrgrgwrbwuuugb;wbubbrggwwubruuurwrubrggbrgrugurwwugrbuwwgugb;wggrwrwwburrgbwgbruuggbuwugwruugbwggrwrbbburwwbbugb;ubwubuurrruugrbwggbgugrbgbbubbruwugbburgwugb;uugwubbbubwrguugggrgugrgrwbwrwrgbbbgbggburrrbggbrwwbgg;rwuubwwurruuwrwbwbbgrwbbgbbwurrggwugguwburgwwbuwrbu;ugwbgbrwwrguubgwuwrbgurwggbggrurbuwruwgrbrgbbgb;grugwbgwbubgurubbrwbrwgbrrbbwubuuwurbrgruwu;wuwbbbwwwrbrgugwrwrwbwrrbubuwwgbbgurgwbbbuubugugwuggruggw;rrrwwgrbburwrgbwrwbwuwuuguggubrurrrgrruruggwbwgwubuwu;rrrgrrrrwwrbwugbwwgurwruwbgugwrggbbgwbugbugb;rrwgruwgbrwurrrrguuubbwuuuruurruwgbrgbwubgbbggrwbbwww;rgbugugurwgurrwuuuguggwggrbrbubgwrwuwbbwgbbgwuuugbggb;urwruwbgrwgwgrrbuwurwwugrbggwwugrgbrggbrbbbguwugb;urwruwurrgurrbrrgwwrbgbbbgrbrwggubguwggburggbwgrurrbubgrugb;wgrubgrrwgubrgurubggrgrrrgrggbgbbuwwurburgrrr;uwrruggugruruurugugbgwguruuruburwugwbugwgbbu;wuugubwwuugubrwgwurrrrbruguwbwuwwwrrwbwbgbgwg;urrggrrrbgubrrbwwrbwwrggbuwrrwgugrbwburrgrrbugrrbgbwub;wgruwrrrgbubwbbuubuwbbgwgwrbwguwugrwuwgrbrwguwb;urgwbbggugrwwuubrwrgwuugrgwrruwgwrbbwrwurrbguwwuwwggggrrg;brwrwrrrrbubbgubwuuwbwuggruggbubbwbwugrgurubbbwrwgr;brrruguggbwgurbwburrwrrbugubrrrwrubugggbugb;wwguwbuuwrbwgrwwwwwrggbuwruuwgurwuugwuurggwgbwu;rububwbrguuuuwrrbwbguwgrwgwuggugwgbgugrrguwru;rgrwbuubwrwrwwbwgrugguwgbrwubwruwwbbgggurbwgwrugb;urrbbubbrubwbwuggrurbbgbgurgbbrgbwbubgrwgrwb;wrrwwbbwubrwuurbwuurbugrrgrrwurbubrwgrrgggguwr;grguwbburbrurubggwwwgrwbgbbugrwrgbrggrugb;gbwrruuurrwbgrgrwgrburbwwgwwuwbubburgrubgwrwgrbb;wwwggwrwwubrggwrgrwgwrbggbbbggubwwwbruguwbwbrrruwgrg;bbwwgwwurwgrgrrgubguggwbugrbuwuwgwgbruwgurgugb;gwgwgwgbgrruwbruwgbguuuwwrubbgrrwgrruwbbbgww;rwwwbggwggbbwggubgubwwrwgrbbubwbwbwbbugb;wgwwgwrbuwbuwgbggwggrguwubggbrwugbbwrrurbrbgru;rrrbgbwurrrbbbrbwgrugrrrrggbgbrgbbruguwwwbu;ugbugwbuuuruggggrubrrugrrrrugbubwugbbwuuwbrrbugurwbrgwg;gbbwuwwbbgwurgwguuwrbgbbgbguruuurrrgbwugwwbrgrgwgrwugbbgb;rwbwggwuuwruuwgburgrubrrwugrwrgggugbgrwgwu;wwwrrugrgrrrugbwgugrwuwrwuguruwuurugbbbwubbgbubr;bwgrwrugrbrrurwgwrbgbbrrwrubbbgwwggugwgwrgruggrggbuwbuugb;ggbgurbbgwbrwbuurrgrrwwurwgrwruwwwuguugubb;wurwgbrgwguubuguugurrwbbrugrgwugruggbgbgbguugb;grrbwbuubwbruggwbubwbwgbrugrrwbrrwgwrbugggbggwwgrugb;uubwrgrrwggubggbwwgugwbrgbgbruwgwuwgrrurrwurbg;gwgurrrwgrguguuuwugwurgrgrrurbwrwgbggggbgbrbwrwurgugbu;rrwbwgugruwuubgbwrwbbbbbbbugwgbwrgggwwrurr;wrrgbwrrbrgrbwuwrwbrrwgubwbgbugburugwgrugruwbgrugb;grbbgrwggrggbrrbgwwguubbrbbbgburgrbwgurggru;bwuwuwbwbugrurgrwbbburwwbrwbuubgggbwwubwwrwwuw;wwwrwbbuubwrguruwwurwwubbgwbbgbrrurbgwwbuggurbwrugw;wuuwwruuguuwbrbugubwrurwrggwuguwwgwwbbbugb;bburuguugrgurugrbwgggbbugrurwgwrrguguuguwubbbbrrwgwurubrugb;wbwgrbbwbrrubwurrgbwbugbrwgwwgwbuubggggguubwgwbbw;bwrwurbwgrgrurbrwrbubrbugrbugubbrbbgrgbuwguguuuuu;grbuuwbrugrbugurrwwwbwrubuwgwwubrbwwwgurrrbubbrubbwuggugg;rurbwrrbwuguuwrurwgruguwrgggrbgbgubwgrwbbbwugb;bbggbwwbwbururuwrgrgrbwggburwwgrrbwuwwwgwgbwgrwwugbg;bwbbbbbwwgwwrgubrrguurwugwwbguugrbrwubgrwgrugbbgwrrwwubgg;rrgwuuuwgwuubbrbwuuubggrrgbrubgbgrrrbbgugbgbguugb;ggburbrwwbgbgwwgrubggggguuwwwrrbubrrgwububbruubggwrgggrbuw;ggrugwrgbubrrrwbbwguuruuwgwrbggguwbgguwwggwbugwruubrugb;buubwgrbbgwurububwgwbgbrrbrbbrwwbbrbbrwggwbbbuwuug;wgwruubwbrwgbwugbwwbgruwuwbbgwrbwrrrurbrgrgwbgwrb;rrrugrgbrrrrgggrbbbgubuwwurwrrrruwbwgwwruwubgwrbwgrbgw;rwggrgrbgwgwgwrwwwrggwbwwrwgrguuugrrguwggruwb;gggrbgwgruwwbbugggwrgurbwwwuugrwbburrrgwgwgrwguwwwgrwgbggr;wwwuwrwggrrrrwuruwwbugbrbrguwuuuuwrrwrbugb";
+
+
+char	**keys;
+char	**patterns;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//***********************************
+//***********************************
+
+char	**ft_split(char const *s, char c);
+
+
+//***********************************
+//***********************************
+
+
+
+
+//Idea:
+//creamos un array de ints del taaño de pattern_len, para cada pattern (en cada paso)
+//probmos todas las keys en todas las posiciones que caben, y si coinciden, hacemos un +1 a esos huecos
+//si al reorrer ese aray de ints no encontramos ningun 0, podemos creas esa palabra
+
+
+
+
+int	main()
+{	
+	int	pat_len = 0;
+	int	key_len = 0;
+	int	u = 0;
+	int	v = 0;
+	int	k = 0;
+	int	i = 0;
+	int	j = 0;
+	int	coincidences = 0;
+	
+	
+	int	total = 0;
+	int	doable = 0;
+	
+	int	*fits;
+	
+	
+	keys = ft_split(input_keys, ';');
+	patterns = ft_split(input_patterns, ';');
+	
+	while (patterns[i] != 0)	//para cada key
+	{
+		pat_len = strlen(patterns[i]);
+		fits = (int *)calloc(sizeof(int), pat_len);//array con ceros, pa guardar coincidencias
+				
+		u = 0;
+		while (keys[u] != 0)	//probar todas las keys qu eentran en pattern
+		{
+			j = 0;
+			key_len = strlen(keys[u]);
+			while (j < pat_len - key_len + 1)	//todas las posiciones en las que cabe la key
+			{
+				coincidences = 0;
+				v = 0;
+				while (v < key_len)
+				{
+					
+					if (patterns[i][j+v] == keys[u][v]) //checkear cuanto coincide
+						coincidences++;
+					v++;
+				}
+				if (coincidences == key_len)	//si oincide, rellenamos las celdas
+				{
+					v = 0;
+					while (v < key_len)
+					{
+						fits[j+v]++;
+						v++;
+					}
+				}
+				j++;
+			}
+			u++;
+		}
+		doable = 0;
+		k = 0;
+		while (k < pat_len)	//checckea si se han podido llenar todos los huecos
+		{
+			if (fits[k] != 0)
+				doable++;
+			k++;
+		}
+		if (doable == pat_len)	//si todos los hueos estan rellenos, se puede hacer
+			total++;
+		
+		free(fits);
+		
+		i++;
+		
+	}
+	
+	printf("%d", total);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+
+	int	i;
+	int	j;
+	int	u;
+	int	v;
+	int	not_valid;
+	int	valid;
+	int	key_number;
+	
+		
+	keys = ft_split(input_keys, ';');
+	patterns = ft_split(input_patterns, ';');
+	
+	
+	key_number = 0;
+	valid = 0;
+	
+	while (keys[key_number] != 0)
+		key_number++;
+	
+	i = 0;
+	
+	while (patterns[i] != 0)	//pillamos el pattern
+	{
+		printf ("get patterns\n");
+		j = 0;
+		while (patterns[i][j] != '\0')	//empezamos a recorrerlo
+		{
+			printf("letter check  ");
+			not_valid = 0;
+			u = 0;
+			while (keys[u] != 0)	//buscamos alguna coincidencia con las keys
+			{
+				v = 0;
+				if (patterns[i][j + v] == keys[u][v])
+				{
+					while (patterns[i][j + v] == keys[u][v] && keys[u][v] != '\0' && patterns[i][j] != '\0')	//comparar el trozo de nuestro pattern con cada key mientas coincida
+						v++;
+					if (keys[u][v] == '\0')	//si coincide, nos movemos para la siguiente
+						j += v;
+					if (patterns[i][j] == '\0') //que acabe el pattern habiendo coincidido exactamente ocn la key
+					{
+						valid++;
+						printf("%d\n", valid);
+						break;
+					}	
+				}
+				else
+					not_valid++;
+				
+				u++;
+			}
+			printf("%d --- %d\n", not_valid, key_number);
+			if (not_valid == key_number)	//si no encuentra ninguna coincidencia dejamos de comparar
+				break;
+		
+		}
+		
+		i++;
+		
+	}
+	
+	printf("%d", valid);
+	*/
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
